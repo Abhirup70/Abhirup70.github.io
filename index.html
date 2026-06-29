@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ============ SEO ============ -->
+<title>Abhirup Majumder — Gen AI, LLM & Agentic AI Engineer</title>
+<meta name="description" content="Abhirup Majumder — Data Scientist and Generative AI / LLM Engineer at Accenture. Building production-grade Agentic AI, RAG pipelines and multi-agent systems at enterprise scale." />
+<meta name="author" content="Abhirup Majumder" />
+<meta name="keywords" content="Abhirup Majumder, Gen AI Engineer, LLM Engineer, Agentic AI, Data Scientist, Machine Learning, RAG, LangGraph, Python, Accenture" />
+<meta name="theme-color" content="#000000" />
+<link rel="canonical" href="https://abhirup70.github.io/" />
+
+<!-- ============ Open Graph / Social ============ -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://abhirup70.github.io/" />
+<meta property="og:title" content="Abhirup Majumder — Gen AI, LLM & Agentic AI Engineer" />
+<meta property="og:description" content="Data Scientist & Generative AI Engineer building production-grade Agentic AI, RAG pipelines and multi-agent systems at enterprise scale." />
+<meta property="og:image" content="https://abhirup70.github.io/profile.jpg" />
+<meta property="og:image:alt" content="Abhirup Majumder" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Abhirup Majumder — Gen AI, LLM & Agentic AI Engineer" />
+<meta name="twitter:description" content="Data Scientist & Generative AI Engineer building production-grade Agentic AI, RAG pipelines and multi-agent systems." />
+<meta name="twitter:image" content="https://abhirup70.github.io/profile.jpg" />
+
+<!-- ============ Favicon (inline SVG monogram) ============ -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='-apple-system,Helvetica,Arial' font-size='52' font-weight='700' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+
+<!-- ============ Fonts ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- ============ Structured data (Google) ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Abhirup Majumder",
+  "url": "https://abhirup70.github.io/",
+  "image": "https://abhirup70.github.io/profile.jpg",
+  "jobTitle": "Data Scientist & Generative AI / LLM Engineer",
+  "worksFor": { "@type": "Organization", "name": "Accenture" },
+  "alumniOf": "Institute of Engineering & Management, Kolkata",
+  "email": "mailto:abhirup.majumder25@gmail.com",
+  "sameAs": [
+    "https://github.com/Abhirup70",
+    "https://www.linkedin.com/in/abhirup-majumder-a7b67b198/"
+  ],
+  "knowsAbout": ["Generative AI","Large Language Models","Agentic AI","RAG","Machine Learning","Data Science","Python"]
+}
+</script>
+
+<style>
+/* ===================== THEME TOKENS ===================== */
+:root{
+  --nav-h: 52px;
+  --maxw: 1080px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --blue: #0071e3;
+  --blue-d: #2997ff;
+  --grad: linear-gradient(95deg,#2997ff 0%,#7c5cff 50%,#b14cff 100%);
+}
+.light{
+  --bg:#ffffff; --bg2:#f5f5f7; --fg:#1d1d1f; --fg2:#6e6e73;
+  --card:#ffffff; --line:rgba(0,0,0,.10); --chip:#f5f5f7; --chip-line:rgba(0,0,0,.07);
+  --accent:#0071e3; --shadow:0 4px 24px rgba(0,0,0,.06);
+}
+.dark{
+  --bg:#000000; --bg2:#0b0b0d; --fg:#f5f5f7; --fg2:#86868b;
+  --card:#161617; --line:rgba(255,255,255,.12); --chip:#1d1d1f; --chip-line:rgba(255,255,255,.12);
+  --accent:#2997ff; --shadow:0 4px 30px rgba(0,0,0,.5);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
+  background:#000;color:#f5f5f7;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+::selection{background:rgba(41,151,255,.3)}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:#333;border-radius:9px}
+
+/* ===================== SCROLL PROGRESS ===================== */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:200;background:var(--grad);transition:width .1s linear}
+
+/* ===================== NAV ===================== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 max(22px,calc((100vw - var(--maxw))/2));
+  background:rgba(20,20,22,.62);backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s,border-color .3s;
+}
+nav.scrolled{background:rgba(20,20,22,.82)}
+.logo{font-weight:700;font-size:19px;letter-spacing:-.02em;color:#f5f5f7}
+.logo b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{font-size:13px;color:#b8b8be;font-weight:400;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  font-size:12.5px;font-weight:500;color:#fff;background:var(--blue);
+  padding:7px 15px;border-radius:980px;transition:transform .2s,background .2s;display:inline-flex;align-items:center;gap:6px
+}
+.nav-cta:hover{background:#0077ed;transform:scale(1.04)}
+.nav-right{display:flex;align-items:center;gap:26px}
+
+/* ===================== BUTTONS ===================== */
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;padding:12px 24px;border-radius:980px;transition:transform .2s var(--ease),background .2s,box-shadow .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn-fill{background:var(--blue);color:#fff}
+.btn-fill:hover{background:#0077ed;transform:scale(1.035)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.btn-ghost:hover{background:rgba(255,255,255,.14);transform:scale(1.035)}
+.link-more{color:var(--accent);font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:4px;transition:gap .2s}
+.link-more:hover{gap:9px}
+.link-more::after{content:"›";font-size:18px;line-height:1}
+
+/* ===================== SECTION SHELL ===================== */
+section{background:var(--bg);color:var(--fg);position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.sec-pad{padding:clamp(72px,11vw,140px) 24px}
+.grey{background:var(--bg2)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--accent);text-transform:none;margin-bottom:14px}
+.h2{font-size:clamp(30px,5vw,52px);font-weight:700;letter-spacing:-.025em;line-height:1.06}
+.lede{font-size:clamp(19px,2.4vw,26px);font-weight:600;letter-spacing:-.01em;color:var(--fg);line-height:1.35}
+.muted{color:var(--fg2)}
+.center{text-align:center}
+.gradtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ===================== HERO ===================== */
+#hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:calc(var(--nav-h) + 40px) 24px 70px}
+.hero-glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-glow::before{content:"";position:absolute;top:-12%;left:50%;transform:translateX(-50%);width:min(900px,120vw);height:620px;background:radial-gradient(ellipse at center,rgba(41,151,255,.20),transparent 62%);filter:blur(8px)}
+.hero-glow::after{content:"";position:absolute;bottom:-22%;left:18%;width:560px;height:560px;background:radial-gradient(ellipse,rgba(150,80,255,.16),transparent 65%)}
+.hero-inner{position:relative;z-index:2;max-width:840px}
+.avatar{width:122px;height:122px;border-radius:50%;margin:0 auto 30px;position:relative;padding:3px;background:var(--grad)}
+.avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #000}
+.avatar::after{content:"";position:absolute;inset:-9px;border-radius:50%;background:radial-gradient(circle,rgba(41,151,255,.35),transparent 70%);z-index:-1;filter:blur(6px)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#d6d6db;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 15px;border-radius:980px;margin-bottom:26px}
+.status .dot{width:7px;height:7px;border-radius:50%;background:#30d158;box-shadow:0 0 0 0 rgba(48,209,88,.6);animation:beat 2.4s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(48,209,88,.55)}70%{box-shadow:0 0 0 8px rgba(48,209,88,0)}100%{box-shadow:0 0 0 0 rgba(48,209,88,0)}}
+#hero h1{font-size:clamp(44px,8.4vw,92px);font-weight:700;letter-spacing:-.035em;line-height:.98;color:#f5f5f7}
+.hero-roles{margin-top:20px;font-size:clamp(17px,2.4vw,23px);font-weight:600;letter-spacing:-.01em;color:#e6e6ea}
+.hero-desc{margin:22px auto 0;max-width:600px;font-size:clamp(15px,1.7vw,18px);color:#a1a1a8;font-weight:400;line-height:1.6}
+.hero-cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:#6e6e73;font-size:22px;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+/* ===================== STATS STRIP ===================== */
+#stats{background:#0b0b0d;color:#f5f5f7;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:clamp(48px,7vw,76px) 0}
+.stat{text-align:center}
+.stat .n{font-size:clamp(38px,6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{margin-top:10px;font-size:13px;color:#86868b;font-weight:500}
+
+/* ===================== ABOUT ===================== */
+.about-lede{max-width:880px;margin:0 auto 56px;text-align:center;font-size:clamp(22px,3vw,34px);font-weight:600;letter-spacing:-.02em;line-height:1.32}
+.about-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:920px;margin:0 auto}
+.about-cols p{color:var(--fg2);font-size:16.5px;line-height:1.75}
+.about-cols strong{color:var(--fg);font-weight:600}
+
+/* ===================== SECTION HEAD ===================== */
+.sec-head{max-width:720px;margin:0 auto 56px;text-align:center}
+.sec-head p{margin-top:16px;font-size:18px;color:var(--fg2)}
+
+/* ===================== SKILLS ===================== */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s}
+.skill:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.10)}
+.dark .skill:hover{box-shadow:0 18px 50px rgba(0,0,0,.6)}
+.skill .ic{font-size:26px;margin-bottom:14px}
+.skill h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12.5px;font-weight:500;color:var(--fg2);background:var(--chip);border:1px solid var(--chip-line);padding:5px 11px;border-radius:980px;transition:color .2s,border-color .2s,background .2s}
+.skill:hover .chip{color:var(--fg)}
+
+/* ===================== EXPERIENCE ===================== */
+.exp{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.job{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.job-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:6px}
+.job-role{font-size:21px;font-weight:600;letter-spacing:-.015em}
+.job-co{font-size:15px;color:var(--accent);font-weight:500;margin-top:3px}
+.job-date{font-size:13px;color:var(--fg2);font-weight:500;background:var(--chip);border:1px solid var(--chip-line);padding:5px 13px;border-radius:980px;white-space:nowrap}
+.proj{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.proj-t{font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.proj-t::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--grad);flex:none}
+.proj ul{list-style:none}
+.proj li{position:relative;padding-left:18px;font-size:14.5px;color:var(--fg2);line-height:1.65;margin-bottom:7px}
+.proj li::before{content:"–";position:absolute;left:0;color:var(--accent)}
+.proj li strong{color:var(--fg);font-weight:600}
+
+/* ===================== PROJECTS ===================== */
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pcard{border-radius:26px;padding:34px;position:relative;overflow:hidden;border:1px solid var(--line);transition:transform .4s var(--ease),box-shadow .4s;min-height:300px;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(0,0,0,.16)}
+.pcard.blue{background:linear-gradient(150deg,#eef4ff 0%,#e3ecff 45%,#dbe4ff 100%)}
+.pcard.teal{background:linear-gradient(150deg,#eafaf3 0%,#dff6ee 45%,#d6f3ea 100%)}
+.pcard .pic{font-size:34px;margin-bottom:18px}
+.pcard h3{font-size:23px;font-weight:700;letter-spacing:-.02em;color:#1d1d1f;margin-bottom:12px}
+.pcard p{font-size:14.5px;line-height:1.65;color:#3a3a40;margin-bottom:18px;flex:1}
+.pstack{display:flex;flex-wrap:wrap;gap:7px}
+.pstack span{font-size:11.5px;font-weight:600;color:#37373d;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06);padding:4px 10px;border-radius:980px}
+.ribbon{margin-top:16px;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#9a6b00;background:rgba(255,209,102,.28);border:1px solid rgba(154,107,0,.25);padding:6px 13px;border-radius:980px;align-self:flex-start}
+
+/* ===================== EDUCATION ===================== */
+.edu-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;max-width:980px;margin:0 auto}
+.edu-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.edu-card .school{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.edu-card .deg{font-size:15px;color:var(--accent);font-weight:500;margin-bottom:6px}
+.edu-card .meta{font-size:13px;color:var(--fg2);font-weight:500;margin-bottom:18px}
+.edu-card .courses{font-size:14px;color:var(--fg2);line-height:1.7}
+.awards{display:flex;flex-direction:column;gap:14px}
+.award{display:flex;gap:15px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.award .em{font-size:26px;flex:none}
+.award .at{font-size:15px;font-weight:600;margin-bottom:3px}
+.award .ad{font-size:13.5px;color:var(--fg2);line-height:1.55}
+
+/* ===================== CONTACT ===================== */
+#contact{overflow:hidden}
+.contact-glow{position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse,rgba(41,151,255,.14),transparent 64%);pointer-events:none}
+.contact-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;text-align:center}
+.contact-inner h2{font-size:clamp(34px,6vw,62px);font-weight:700;letter-spacing:-.03em;line-height:1.02}
+.contact-inner p{margin-top:20px;font-size:19px;color:var(--fg2)}
+.contact-methods{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.cm{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;transition:transform .2s,border-color .2s}
+.cm:hover{transform:translateY(-3px);border-color:var(--accent)}
+.cm .cmi{font-size:20px;width:24px;text-align:center;flex:none}
+.cm .cl{font-size:11.5px;color:var(--fg2);font-weight:500}
+.cm .cv{font-size:14px;font-weight:500;color:var(--fg);word-break:break-all}
+.contact-cta{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* ===================== FOOTER ===================== */
+footer{background:#000;color:#86868b;border-top:1px solid rgba(255,255,255,.1);padding:34px 24px}
+.foot-wrap{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.foot-links{display:flex;gap:22px}
+.foot-links a{color:#86868b;transition:color .2s}
+.foot-links a:hover{color:#fff}
+
+/* ===================== REVEAL ANIM ===================== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}.reveal.d5{transition-delay:.4s}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:860px){
+  .nav-links{display:none}
+  .about-cols{grid-template-columns:1fr;gap:22px}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:34px 16px}
+  .contact-methods{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .skills-grid{grid-template-columns:1fr}
+  .job{padding:24px}
+  .job-head{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <a href="#hero" class="logo">Abhirup<b>.</b></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <a href="resume.pdf" download class="nav-cta">↓ Download CV</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="dark">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="avatar reveal in"><img src="profile.jpg" alt="Abhirup Majumder" /></div>
+    <div class="status reveal in"><span class="dot"></span>Available for new opportunities</div>
+    <h1 class="reveal in">Abhirup <span class="gradtext">Majumder</span></h1>
+    <div class="hero-roles reveal in d1">Data Scientist · Gen AI &amp; LLM Developer · Agentic AI Engineer</div>
+    <p class="hero-desc reveal in d2">
+      Building production-grade Generative AI, Agentic AI and LLM systems at enterprise scale —
+      turning cutting-edge research into measurable business impact, from RAG pipelines and
+      multi-agent workflows to real-time intelligent automation.
+    </p>
+    <div class="hero-cta reveal in d3">
+      <a href="#contact" class="btn btn-fill">Get in touch</a>
+      <a href="resume.pdf" download class="btn btn-ghost">↓ Download CV</a>
+    </div>
+  </div>
+  <a href="#stats" class="scrollcue" aria-label="Scroll down">⌄</a>
+</section>
+
+<!-- ================= STATS ================= -->
+<section id="stats" class="dark">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="n" data-target="3" data-suffix="+">0</div><div class="l">Years Experience</div></div>
+      <div class="stat reveal d1"><div class="n" data-target="4" data-suffix="+">0</div><div class="l">AI Systems Shipped</div></div>
+      <div class="stat reveal d2"><div class="n" data-target="9.08" data-dec="2">0</div><div class="l">B.Tech CGPA / 10</div></div>
+      <div class="stat reveal d3"><div class="n" data-target="5" data-prefix="Top " data-suffix="%">0</div><div class="l">GATE National Rank</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="light sec-pad">
+  <div class="wrap">
+    <div class="eyebrow center reveal">About</div>
+    <p class="about-lede reveal d1">
+      I build AI that ships. My work lives where advanced LLMs meet real enterprise systems —
+      where reliability and business impact aren&rsquo;t optional.
+    </p>
+    <div class="about-cols">
+      <div class="reveal d2">
+        <p>I&rsquo;m a Data Scientist and Generative AI Developer based in India, currently at <strong>Accenture</strong>, where I architect and deploy production-grade LLM and Agentic AI solutions for enterprise clients across tax automation, financial analytics and intelligent audit systems.</p>
+      </div>
+      <div class="reveal d3">
+        <p>I design RAG pipelines, multi-agent workflows and LLM evaluation frameworks that scale — working with GPT, Claude, LangGraph, LlamaIndex and AutoGen. Before AI went mainstream, I did ML research at <strong>IIT Kharagpur</strong> on wildlife conservation. I&rsquo;m a GATE top-5% graduate and national award winner, always chasing the next hard problem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="light grey sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Technical Toolkit</div>
+      <h2 class="h2 reveal d1">What I build with</h2>
+      <p class="reveal d2">A full-stack AI skill set — from frontier LLM frameworks down to the data and cloud that run them.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill reveal"><div class="ic">🤖</div><h3>Gen AI &amp; LLM Frameworks</h3>
+        <div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">LlamaIndex</span><span class="chip">AutoGen</span><span class="chip">ReAct</span><span class="chip">GPT (OpenAI)</span><span class="chip">Claude</span><span class="chip">HuggingFace</span><span class="chip">ONNX</span></div></div>
+      <div class="skill reveal d1"><div class="ic">🧠</div><h3>Agentic AI &amp; RAG</h3>
+        <div class="chips"><span class="chip">Agentic Patterns</span><span class="chip">RAG Pipelines</span><span class="chip">Vector Stores</span><span class="chip">Semantic Search</span><span class="chip">LLM Evaluation</span><span class="chip">Benchmarking</span><span class="chip">Multi-Agent Systems</span></div></div>
+      <div class="skill reveal d2"><div class="ic">📊</div><h3>ML &amp; Statistics</h3>
+        <div class="chips"><span class="chip">PyTorch</span><span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">Keras</span><span class="chip">PySpark</span><span class="chip">EDA</span><span class="chip">Regression</span><span class="chip">Forecasting</span></div></div>
+      <div class="skill reveal"><div class="ic">🗄️</div><h3>Data Engineering &amp; Cloud</h3>
+        <div class="chips"><span class="chip">Snowflake</span><span class="chip">Databricks</span><span class="chip">Delta Lake</span><span class="chip">AWS (S3, Lambda)</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Airflow</span><span class="chip">MLflow</span></div></div>
+      <div class="skill reveal d1"><div class="ic">⚙️</div><h3>Enterprise &amp; SAP</h3>
+        <div class="chips"><span class="chip">SAP BTP</span><span class="chip">SAP ABAP</span><span class="chip">SAP S/4HANA</span><span class="chip">OData</span><span class="chip">CDS Views</span><span class="chip">OAuth 2.0</span><span class="chip">REST APIs</span><span class="chip">MS Graph API</span></div></div>
+      <div class="skill reveal d2"><div class="ic">💻</div><h3>Programming</h3>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">JavaScript</span><span class="chip">Bash</span><span class="chip">Git</span><span class="chip">CI/CD</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience" class="dark sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Experience</div>
+      <h2 class="h2 reveal d1">Where I&rsquo;ve built</h2>
+      <p class="reveal d2">Nearly three years shipping AI into production for enterprise clients — plus research and ML foundations.</p>
+    </div>
+    <div class="exp">
+
+      <article class="job reveal">
+        <div class="job-head">
+          <div>
+            <div class="job-role">Data Scientist &amp; Gen AI Developer</div>
+            <div class="job-co">Accenture · Computational AI / ML</div>
+          </div>
+          <div class="job-date">Jul 2023 – Present</div>
+        </div>
+        <div class="proj">
+          <div class="proj-t">U.S. Tax Automation — Agentic AI &amp; LLM Pipeline</div>
+          <ul>
+            <li>Architected specialised Agentic AI workflows using LangGraph and ReAct patterns to automate U.S. tax determination, applying data mining to classify large unstructured invoice datasets.</li>
+            <li>Designed and deployed RAG pipelines with vector-store integration for context-aware LLM inference on commodity-code classification, integrating SAP HANA Data Mart and the VERTEX tax engine via REST APIs.</li>
+            <li>Built LLM evaluation metrics and benchmarking frameworks to validate model outputs before production rollout.</li>
+          </ul>
+        </div>
+        <div class="proj">
+          <div class="proj-t">Invoice Financial Review System — Gen AI Classification</div>
+          <ul>
+            <li>Engineered GL and Tax classification agents using GPT and Claude models on structured and unstructured invoice data; performed EDA to optimise classification accuracy.</li>
+            <li>Delivered data-visualisation and storytelling outputs for business stakeholders, hosted on SAP BTP with OAuth 2.0 integration to SAP S/4HANA (ACDOCA).</li>
+            <li>Partnered with product owners to scope and deliver strategic Agentic AI solutions with human-in-the-loop workflows.</li>
+          </ul>
+        </div>
+        <div class="proj">
+          <div class="proj-t">Audit PBC Mail Response System — LLM Automation</div>
+          <ul>
+            <li>Led an intelligent email-automation system using NLP and LLM techniques to mine, classify and analyse trends across large volumes of unstructured financial audit data via Microsoft Graph API.</li>
+            <li>Implemented Agentic AI patterns to autonomously query SAP S/4HANA and generate context-aware responses, <strong>significantly reducing manual workload</strong> for audit and compliance teams.</li>
+          </ul>
+        </div>
+        <div class="proj">
+          <div class="proj-t">SAP Enterprise Data Integration &amp; Analytics</div>
+          <ul>
+            <li>Developed cloud-based enterprise data pipelines on SAP BTP, implementing ETL with CDS views and OData services for the Japanese pharmaceutical market.</li>
+            <li>Performed database optimisation and performance tuning of legacy ABAP code to improve throughput and integrity across multi-system environments.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal d1">
+        <div class="job-head">
+          <div>
+            <div class="job-role">ML Research Intern</div>
+            <div class="job-co">IIT Kharagpur</div>
+          </div>
+          <div class="job-date">Oct 2021 – Jul 2022</div>
+        </div>
+        <div class="proj">
+          <ul>
+            <li>Built end-to-end ML data pipelines in Python and MySQL to ingest and perform EDA on large volumes of satellite telemetry data for wildlife conservation research.</li>
+            <li>Developed and tuned a high-accuracy poacher-detection model — contributing to a <strong>50% reduction in local poaching rates</strong>.</li>
+            <li>Designed data-mining queries and contributed classification methodology and evaluation metrics to open-source research.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal d2">
+        <div class="job-head">
+          <div>
+            <div class="job-role">Machine Learning Intern</div>
+            <div class="job-co">Verzeo</div>
+          </div>
+          <div class="job-date">Feb 2020 – Jun 2020</div>
+        </div>
+        <div class="proj">
+          <ul>
+            <li>Built supervised ML pipelines for fraud detection, churn prediction and sales forecasting using regression, decision trees and ensemble models.</li>
+            <li>Designed ETL workflows and REST API integrations to turn raw transactional data into actionable insights — improving early-engagement prediction accuracy by <strong>200%</strong>.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="light sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Selected Work</div>
+      <h2 class="h2 reveal d1">Things I&rsquo;ve built</h2>
+      <p class="reveal d2">A look beyond the day job — competitions, research and systems built end to end.</p>
+    </div>
+    <div class="proj-grid">
+      <article class="pcard blue reveal">
+        <div class="pic">📈</div>
+        <h3>Jane Street Market Prediction</h3>
+        <p>High-frequency trading ensemble combining an MLP (PyTorch/Keras) and GBDTs (LightGBM/XGBoost) over 130+ anonymised market features. Built a bottleneck autoencoder for feature denoising, Purged Group Time-Series Cross-Validation for non-stationarity, and a Utility Score balancing daily returns against volatility.</p>
+        <div class="pstack"><span>PyTorch</span><span>LightGBM</span><span>XGBoost</span><span>Keras</span><span>Pandas</span><span>Scikit-learn</span></div>
+      </article>
+      <article class="pcard teal reveal d1">
+        <div class="pic">🌡️</div>
+        <h3>IoT-Based Smart HVAC System</h3>
+        <p>A real-time IoT data pipeline with sensor analytics and visualisation achieving a 25% reduction in energy consumption, integrating Python, MQTT, Firebase and Arduino with full AutoCAD design.</p>
+        <div class="pstack"><span>Python</span><span>MQTT</span><span>Firebase</span><span>Arduino</span><span>AutoCAD</span><span>IoT</span></div>
+        <div class="ribbon">🏆 3rd Place — ISHRAE All-India Competition</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education" class="light grey sec-pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Education &amp; Awards</div>
+      <h2 class="h2 reveal d1">Academic foundation</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="school">Institute of Engineering &amp; Management</div>
+        <div class="deg">B.Tech — Electrical Engineering</div>
+        <div class="meta">CGPA 9.08 / 10 · Jun 2019 – Jul 2023 · Kolkata</div>
+        <div class="courses">Relevant coursework: Data Science, Statistics, Cloud Computing, Database Management Systems, Data Structures &amp; Algorithms, Artificial Intelligence, Machine Organization &amp; Programming, Software Engineering, OOP.</div>
+      </div>
+      <div class="awards">
+        <div class="award reveal d1"><div class="em">🎯</div><div><div class="at">GATE — Top 5% Nationally (Rank 4014, Score 500)</div><div class="ad">Ranked in the top 5% nationally in the GATE examination.</div></div></div>
+        <div class="award reveal d2"><div class="em">🏆</div><div><div class="at">ISHRAE National Design Competition — 3rd Place</div><div class="ad">All-India student design competition for an IoT Smart HVAC system.</div></div></div>
+        <div class="award reveal d3"><div class="em">🔬</div><div><div class="at">IIT Kharagpur Research Contribution</div><div class="ad">Contributed classification methodology and evaluation metrics to open-source wildlife conservation research.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="dark sec-pad">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="reveal d1">Let&rsquo;s build something great.</h2>
+    <p class="reveal d2">Open to new opportunities, collaborations and hard problems in AI &amp; Data Science.</p>
+    <div class="contact-methods reveal d3">
+      <a class="cm" href="mailto:abhirup.majumder25@gmail.com"><span class="cmi">✉️</span><span><span class="cl">Email</span><br><span class="cv">abhirup.majumder25@gmail.com</span></span></a>
+      <a class="cm" href="https://www.linkedin.com/in/abhirup-majumder-a7b67b198/" target="_blank" rel="noopener"><span class="cmi">in</span><span><span class="cl">LinkedIn</span><br><span class="cv">abhirup-majumder</span></span></a>
+      <a class="cm" href="https://github.com/Abhirup70" target="_blank" rel="noopener"><span class="cmi">⌥</span><span><span class="cl">GitHub</span><br><span class="cv">github.com/Abhirup70</span></span></a>
+      <a class="cm" href="tel:+918910914318"><span class="cmi">☎</span><span><span class="cl">Phone</span><br><span class="cv">+91 8910914318</span></span></a>
+    </div>
+    <div class="contact-cta reveal d4">
+      <a href="mailto:abhirup.majumder25@gmail.com" class="btn btn-fill">Get in touch</a>
+      <a href="resume.pdf" download class="btn btn-ghost">↓ Download CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-wrap">
+    <span>© 2026 Abhirup Majumder</span>
+    <div class="foot-links">
+      <a href="#about">About</a><a href="#projects">Projects</a>
+      <a href="https://github.com/Abhirup70" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/abhirup-majumder-a7b67b198/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <span>Designed &amp; hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+/* nav scroll state + progress bar */
+const nav=document.getElementById('nav'),prog=document.getElementById('progress');
+function onScroll(){
+  const y=window.scrollY||document.documentElement.scrollTop;
+  nav.classList.toggle('scrolled',y>10);
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?(y/h)*100:0)+'%';
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+
+/* count-up stats */
+function animateCount(el){
+  const target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.dec||'0'),
+        pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',dur=1400,t0=performance.now();
+  function tick(t){
+    let p=Math.min((t-t0)/dur,1);p=1-Math.pow(1-p,3);
+    el.textContent=pre+(target*p).toFixed(dec)+suf;
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const statIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);statIO.unobserve(e.target);}});
+},{threshold:.6});
+document.querySelectorAll('.stat .n').forEach(el=>statIO.observe(el));
+</script>
+</body>
+</html>
