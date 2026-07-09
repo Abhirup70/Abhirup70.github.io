@@ -239,14 +239,13 @@ footer{background:#05070c;border-top:1px solid var(--d-line);padding:26px 0}
 .foot a{color:var(--d-mut)}.foot a:hover{color:var(--amber)}
 
 /* ============ garage / 3d engine ============ */
-.engine-stage{position:relative;border:1px solid var(--d-line);border-radius:22px;overflow:hidden;background:radial-gradient(125% 95% at 50% 8%,#eef0f2,#ccd0d6 55%,#aab0b8 100%);height:clamp(360px,56vh,600px);cursor:grab}
-.engine-stage::after{content:"";position:absolute;left:50%;bottom:6%;transform:translateX(-50%);width:58%;height:56px;background:radial-gradient(ellipse at center,rgba(18,24,32,.26),transparent 70%);filter:blur(6px);pointer-events:none}
+.engine-stage{position:relative;border:1px solid var(--d-line);border-radius:22px;overflow:hidden;background:radial-gradient(55% 42% at 50% -8%,rgba(255,255,255,.14),transparent 60%),linear-gradient(180deg,#0c0f16,#05070b 72%,#0a0e14);height:clamp(360px,56vh,600px);cursor:grab}
 #engine-canvas{position:absolute;inset:0}
 #engine-canvas canvas{display:block}
-.engine-spec{position:absolute;top:15px;left:20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:#3a3f46;pointer-events:none;z-index:2}
-.engine-spec b{color:#ff5e00;font-weight:500}
-.engine-hud{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#4b5058;pointer-events:none;flex-wrap:wrap;z-index:2}
-.engine-hud .amber{color:#ff5e00}
+.engine-spec{position:absolute;top:15px;left:20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:#aeb6c2;pointer-events:none;z-index:2}
+.engine-spec b{color:var(--amber);font-weight:500}
+.engine-hud{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8792a3;pointer-events:none;flex-wrap:wrap;z-index:2;background:linear-gradient(0deg,rgba(5,7,11,.5),transparent)}
+.engine-hud .amber{color:var(--amber)}
 
 /* ============ reveal ============ */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -665,20 +664,23 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var W=stage.clientWidth, H=stage.clientHeight||420;
   var scene=new THREE.Scene();
-  var camera=new THREE.PerspectiveCamera(36,W/H,0.1,100);camera.position.set(0,1.5,15);camera.lookAt(0,-0.1,0);
+  var camera=new THREE.PerspectiveCamera(35,W/H,0.1,100);camera.position.set(0,1.7,15);camera.lookAt(0,-0.2,0);
   var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(W,H);renderer.outputEncoding=THREE.sRGBEncoding;
   stage.appendChild(renderer.domElement);
-  scene.add(new THREE.AmbientLight(0xffffff,0.4));
-  scene.add(new THREE.HemisphereLight(0xffffff,0x7a828c,0.5));
+  scene.add(new THREE.AmbientLight(0x223041,0.32));
+  scene.add(new THREE.HemisphereLight(0x3a4658,0x05070b,0.28));
+  var spot=new THREE.SpotLight(0xffffff,2.6,50,0.62,0.7,1.1);spot.position.set(0,13,4);spot.target.position.set(0,-0.5,0);scene.add(spot);scene.add(spot.target);
   function dl(c,i,x,y,z){var l=new THREE.DirectionalLight(c,i);l.position.set(x,y,z);scene.add(l);}
-  dl(0xffffff,0.8,5,10,7);dl(0xdfe6ee,0.3,-6,2,5);dl(0xffffff,0.4,0,6,-8);
-  var mBlock=new THREE.MeshPhongMaterial({color:0x3b4046,specular:0x1e2226,shininess:30});
-  var mBarrel=new THREE.MeshPhongMaterial({color:0x2b2f34,specular:0x15181b,shininess:22});
-  var mFin=new THREE.MeshPhongMaterial({color:0x878e96,specular:0xc4cad0,shininess:45});
-  var mSteel=new THREE.MeshPhongMaterial({color:0x6d737b,specular:0xaeb4bc,shininess:60});
-  var mCover=new THREE.MeshPhongMaterial({color:0x202327,specular:0x101214,shininess:25});
-  var mOrange=new THREE.MeshPhongMaterial({color:0xff5e00,specular:0x552300,shininess:50,emissive:0x321400});
+  dl(0x9fc0ff,0.5,-7,4,-8);dl(0xffffff,0.3,5,6,7);
+  var pa=new THREE.PointLight(0xffb03a,0.6,40);pa.position.set(6,1,4);scene.add(pa);
+  var mBlock=new THREE.MeshPhongMaterial({color:0x40454c,specular:0x8892a0,shininess:70});
+  var mBarrel=new THREE.MeshPhongMaterial({color:0x2b2f34,specular:0x4a525c,shininess:40});
+  var mFin=new THREE.MeshPhongMaterial({color:0xcacdd2,specular:0xffffff,shininess:120});
+  var mSteel=new THREE.MeshPhongMaterial({color:0x9aa0a8,specular:0xffffff,shininess:110});
+  var mCover=new THREE.MeshPhongMaterial({color:0x1b1e23,specular:0x30363d,shininess:50});
+  var mOrange=new THREE.MeshPhongMaterial({color:0xff6a00,specular:0x8a4010,shininess:60,emissive:0x3a1600});
+  var floor=new THREE.Mesh(new THREE.PlaneGeometry(60,60),new THREE.MeshPhongMaterial({color:0x070a0f,specular:0x2a3746,shininess:220}));floor.rotation.x=-Math.PI/2;floor.position.y=-1.75;scene.add(floor);
   var engine=new THREE.Group();engine.scale.setScalar(0.92);scene.add(engine);
   function P(mesh,x,y,z,rz,parent){mesh.position.set(x,y,z);if(rz!==undefined)mesh.rotation.z=rz;(parent||engine).add(mesh);return mesh;}
   P(new THREE.Mesh(new THREE.BoxGeometry(2.0,1.9,6.2),mBlock),0,0,0);
