@@ -239,12 +239,14 @@ footer{background:#05070c;border-top:1px solid var(--d-line);padding:26px 0}
 .foot a{color:var(--d-mut)}.foot a:hover{color:var(--amber)}
 
 /* ============ garage / 3d engine ============ */
-.engine-stage{position:relative;border:1px solid var(--d-line);border-radius:22px;overflow:hidden;background:radial-gradient(65% 65% at 50% 42%,#141d2b,#090c12 82%);height:clamp(360px,56vh,600px);cursor:grab}
+.engine-stage{position:relative;border:1px solid var(--d-line);border-radius:22px;overflow:hidden;background:radial-gradient(125% 95% at 50% 8%,#eef0f2,#ccd0d6 55%,#aab0b8 100%);height:clamp(360px,56vh,600px);cursor:grab}
+.engine-stage::after{content:"";position:absolute;left:50%;bottom:6%;transform:translateX(-50%);width:58%;height:56px;background:radial-gradient(ellipse at center,rgba(18,24,32,.26),transparent 70%);filter:blur(6px);pointer-events:none}
 #engine-canvas{position:absolute;inset:0}
 #engine-canvas canvas{display:block}
-.engine-spec{position:absolute;top:15px;left:20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--amber);pointer-events:none}
-.engine-hud{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--d-mut);pointer-events:none;flex-wrap:wrap;background:linear-gradient(0deg,rgba(9,12,18,.55),transparent)}
-.engine-hud .amber{color:var(--amber)}
+.engine-spec{position:absolute;top:15px;left:20px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:#3a3f46;pointer-events:none;z-index:2}
+.engine-spec b{color:#ff5e00;font-weight:500}
+.engine-hud{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:14px 20px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#4b5058;pointer-events:none;flex-wrap:wrap;z-index:2}
+.engine-hud .amber{color:#ff5e00}
 
 /* ============ reveal ============ */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -598,9 +600,9 @@ footer{background:#05070c;border-top:1px solid var(--d-line);padding:26px 0}
     </div>
     <div class="engine-stage rv">
       <div id="engine-canvas"></div>
-      <div class="engine-spec">FLAT-SIX · BOXER · AIR-COOLED</div>
+      <div class="engine-spec">FLAT-SIX · BOXER · <b>HV-HYBRID</b></div>
       <div class="engine-hud">
-        <span class="amber">◆ 6 cylinders · horizontally opposed</span>
+        <span class="amber">◆ six opposed cylinders · high-voltage</span>
         <span>drag to rotate ⟲</span>
       </div>
     </div>
@@ -663,41 +665,46 @@ if(matchMedia('(prefers-reduced-motion: reduce)').matches){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var W=stage.clientWidth, H=stage.clientHeight||420;
   var scene=new THREE.Scene();
-  var camera=new THREE.PerspectiveCamera(36,W/H,0.1,100);camera.position.set(0,1.5,16);camera.lookAt(0,-0.2,0);
+  var camera=new THREE.PerspectiveCamera(36,W/H,0.1,100);camera.position.set(0,1.5,15);camera.lookAt(0,-0.1,0);
   var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(W,H);renderer.outputEncoding=THREE.sRGBEncoding;
   stage.appendChild(renderer.domElement);
-  scene.add(new THREE.AmbientLight(0x39404c,0.65));
+  scene.add(new THREE.AmbientLight(0xffffff,0.4));
+  scene.add(new THREE.HemisphereLight(0xffffff,0x7a828c,0.5));
   function dl(c,i,x,y,z){var l=new THREE.DirectionalLight(c,i);l.position.set(x,y,z);scene.add(l);}
-  function pl(c,i,x,y,z){var l=new THREE.PointLight(c,i,60);l.position.set(x,y,z);scene.add(l);}
-  dl(0xffffff,1.05,6,9,7);dl(0x8fbaff,0.3,-6,3,6);dl(0xffffff,0.35,0,10,-3);pl(0xffb03a,1.15,-7,1.5,4);pl(0x61e0ff,0.85,7,-1.5,-5);
-  var mBlock=new THREE.MeshPhongMaterial({color:0x20242c,specular:0x4a525c,shininess:45});
-  var mFin=new THREE.MeshPhongMaterial({color:0xacb4bf,specular:0xdfe6ee,shininess:95});
-  var mSteel=new THREE.MeshPhongMaterial({color:0x7f868f,specular:0xd6dce4,shininess:95});
-  var mDark=new THREE.MeshPhongMaterial({color:0x111419,specular:0x363c43,shininess:35});
-  var mAmber=new THREE.MeshPhongMaterial({color:0xffb03a,specular:0xffe0a0,shininess:90,emissive:0x2e1c00});
+  dl(0xffffff,0.8,5,10,7);dl(0xdfe6ee,0.3,-6,2,5);dl(0xffffff,0.4,0,6,-8);
+  var mBlock=new THREE.MeshPhongMaterial({color:0x3b4046,specular:0x1e2226,shininess:30});
+  var mBarrel=new THREE.MeshPhongMaterial({color:0x2b2f34,specular:0x15181b,shininess:22});
+  var mFin=new THREE.MeshPhongMaterial({color:0x878e96,specular:0xc4cad0,shininess:45});
+  var mSteel=new THREE.MeshPhongMaterial({color:0x6d737b,specular:0xaeb4bc,shininess:60});
+  var mCover=new THREE.MeshPhongMaterial({color:0x202327,specular:0x101214,shininess:25});
+  var mOrange=new THREE.MeshPhongMaterial({color:0xff5e00,specular:0x552300,shininess:50,emissive:0x321400});
   var engine=new THREE.Group();engine.scale.setScalar(0.92);scene.add(engine);
   function P(mesh,x,y,z,rz,parent){mesh.position.set(x,y,z);if(rz!==undefined)mesh.rotation.z=rz;(parent||engine).add(mesh);return mesh;}
   P(new THREE.Mesh(new THREE.BoxGeometry(2.0,1.9,6.2),mBlock),0,0,0);
-  P(new THREE.Mesh(new THREE.BoxGeometry(1.6,0.7,5.4),mDark),0,-1.15,0);
+  P(new THREE.Mesh(new THREE.BoxGeometry(1.6,0.7,5.4),mCover),0,-1.15,0);
   var finGeo=new THREE.CylinderGeometry(0.82,0.82,0.05,26),barrelGeo=new THREE.CylinderGeometry(0.64,0.64,1.5,26,1,true),pistonGeo=new THREE.CylinderGeometry(0.56,0.56,0.5,24),headGeo=new THREE.BoxGeometry(0.55,1.15,1.15),rodGeo=new THREE.CylinderGeometry(0.09,0.11,1.0,12);
   var zs=[-2,0,2],cyl=[],idx=0;
   [1,-1].forEach(function(dir){zs.forEach(function(z){
-    P(new THREE.Mesh(barrelGeo,mDark),dir*1.85,0,z,Math.PI/2);
+    P(new THREE.Mesh(barrelGeo,mBarrel),dir*1.85,0,z,Math.PI/2);
     for(var f=0;f<8;f++)P(new THREE.Mesh(finGeo,mFin),dir*(1.2+f*0.19),0,z,Math.PI/2);
     P(new THREE.Mesh(headGeo,mBlock),dir*2.75,0,z);
-    P(new THREE.Mesh(new THREE.BoxGeometry(0.35,0.3,1.0),mAmber),dir*2.9,0.55,z);
+    P(new THREE.Mesh(new THREE.BoxGeometry(0.35,0.3,1.0),mCover),dir*2.9,0.55,z);
     var piston=P(new THREE.Mesh(pistonGeo,mSteel),dir*1.6,0,z,Math.PI/2);
     var rod=P(new THREE.Mesh(rodGeo,mSteel),0,0,0);
     cyl.push({piston:piston,rod:rod,dir:dir,z:z,phase:idx*(Math.PI*2/3)});idx++;
   });});
+  function cable(pts,r){var cu=new THREE.CatmullRomCurve3(pts.map(function(p){return new THREE.Vector3(p[0],p[1],p[2]);}));engine.add(new THREE.Mesh(new THREE.TubeGeometry(cu,64,r,12,false),mOrange));}
+  cable([[-3.25,0.15,0.7],[-1.6,0.98,0.5],[0.1,1.08,0.15],[1.6,0.86,-0.35],[2.8,0.28,-1.05]],0.1);
+  cable([[-3.0,-0.15,-0.85],[-1.1,0.72,-0.7],[0.35,0.86,-0.2],[1.7,0.6,0.45],[2.75,0.12,1.0]],0.088);
+  [[-3.25,0.15,0.7],[2.8,0.28,-1.05],[2.75,0.12,1.0],[-3.0,-0.15,-0.85]].forEach(function(p){P(new THREE.Mesh(new THREE.SphereGeometry(0.15,16,16),mOrange),p[0],p[1],p[2]);});
   var crank=new THREE.Group();engine.add(crank);
   var shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,6.2,20),mSteel);shaft.rotation.x=Math.PI/2;crank.add(shaft);
   zs.forEach(function(z){P(new THREE.Mesh(new THREE.BoxGeometry(0.9,0.7,0.24),mSteel),0,0,z,0,crank);});
   var fly=new THREE.Mesh(new THREE.CylinderGeometry(1.05,1.05,0.34,40),mBlock);fly.rotation.x=Math.PI/2;fly.position.z=3.4;crank.add(fly);
   var flyR=new THREE.Mesh(new THREE.TorusGeometry(1.05,0.08,12,48),mSteel);flyR.position.z=3.55;crank.add(flyR);
   var fan=new THREE.Group();fan.position.z=-3.5;crank.add(fan);
-  var hub=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,0.3,20),mDark);hub.rotation.x=Math.PI/2;fan.add(hub);
+  var hub=new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,0.3,20),mCover);hub.rotation.x=Math.PI/2;fan.add(hub);
   for(var i=0;i<9;i++){var bl=new THREE.Mesh(new THREE.BoxGeometry(0.15,0.9,0.06),mFin);var a=i/9*Math.PI*2;bl.position.set(Math.cos(a)*0.62,Math.sin(a)*0.62,0);bl.rotation.z=a;bl.rotation.y=0.5;fan.add(bl);}
   var R=0.42,L=1.5,upV=new THREE.Vector3(0,1,0),tmp=new THREE.Vector3(),cp=new THREE.Vector3(),pp=new THREE.Vector3();
   function setRod(rod,a,b){tmp.subVectors(b,a);rod.position.copy(a).add(b).multiplyScalar(0.5);rod.scale.y=tmp.length();rod.quaternion.setFromUnitVectors(upV,tmp.normalize());}
